@@ -23,7 +23,7 @@ app.enable('trust proxy');
 console.log('REMOTE: ', process.env.REMOTE);
 
 app.use(cors({ credentials: true, origin: process.env.REMOTE })); // <- CORS configuration, in case if you wanted to implemented authorization
-app.options(process.env.REMOTE, cors());
+app.options(process.env.REMOTE || '*', cors());
 
 console.log((`ENV = ${process.env.NODE_ENV}`));
 app.use(morgan('dev')); // <- Logs res status code and time taken
